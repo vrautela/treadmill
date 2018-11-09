@@ -115,7 +115,9 @@ olcRequires: {{ r }}
 
 {#- Limits #}
 olcLimits: dn.exact="{{ backend.rootdn }}" time.soft=unlimited time.hard=unlimited size.soft=unlimited size.hard=unlimited size.pr=unlimited size.prtotal=unlimited
+{%- if gssapi %}
 olcLimits: dn.base=uid={{ backend.owner }},cn=gssapi,cn=auth time.soft=unlimited time.hard=unlimited size.soft=unlimited size.hard=unlimited size.pr=unlimited size.prtotal=unlimited
+{%- endif %}
 olcSizeLimit: size.soft={{ backend.size_limit | default(500) }} size.hard={{ backend.size_limit | default(500) }} size.pr=unlimited size.prtotal=unlimited
 olcTimeLimit: {{ backend.time_limit | default(3600) }}
 

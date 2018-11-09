@@ -5,6 +5,8 @@ RM={{ rm }}
 MV={{ mv }}
 ECHO={{ echo }}
 
+set -e
+
 if [[ ! -d '{{ dir_config }}/cn=config' ]]
 then
     $MKDIR -p {{ dir }}/run
